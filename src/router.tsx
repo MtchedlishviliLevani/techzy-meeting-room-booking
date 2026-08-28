@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App.tsx";
+import Bookings from "./pages/Bookings.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Rooms from "./pages/Rooms.tsx";
 import Schedule from "./pages/Schedule.tsx";
-import Bookings from "./pages/Bookings.tsx";
 
 export const router = createBrowserRouter([
   {
