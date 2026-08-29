@@ -15,3 +15,18 @@ export type Employee = {
   role: string;
   department: string;
 };
+
+export type BookingStatus = "confirmed" | "completed" | "cancelled";
+
+export type Booking = {
+  id: string;
+  title: string;
+  description: string;
+  roomId: string;
+  organizerId: string;
+  attendeeIds: string[];
+  date: string;
+  startTime: string;
+  endTime: string;
+  status: BookingStatus;
+};
