@@ -14,3 +14,4 @@ export * from "./SegmentedControl";
 export * from "./Select";
 export * from "./TechzyLogo";
 export * from "./TextInput";
+export * from "./Textarea";
