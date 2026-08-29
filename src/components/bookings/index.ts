@@ -1,5 +1,6 @@
 export * from "./bookingDates";
 export * from "./BookingCard";
+export * from "./BookingDetails";
 export * from "./BookingFilters";
 export * from "./BookingList";
 export * from "./BookingListSkeleton";
