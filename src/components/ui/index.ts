@@ -8,6 +8,7 @@ export * from "./EmptyState";
 export * from "./FieldError";
 export * from "./fieldStyles";
 export * from "./FilterPanel";
+export * from "./Modal";
 export * from "./Navbar";
 export * from "./SearchInput";
 export * from "./SegmentedControl";
