@@ -4,6 +4,7 @@ export * from "./BookingFilters";
 export * from "./BookingList";
 export * from "./BookingListSkeleton";
 export * from "./BookingRow";
+export * from "./BookingsEmptyState";
 export * from "./BookingStatus";
 export * from "./filterBookings";
 export * from "./getBookingActions";
