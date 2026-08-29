@@ -1,35 +1,39 @@
 import { Plus, SearchX, TriangleAlert } from "lucide-react";
-import { filterRooms, RoomFilters, RoomGrid } from "@/components/rooms";
-import { Button } from "@/components/ui/Button";
-import { EmptyState } from "@/components/ui/EmptyState";
-import { useRoomFilters } from "@/hooks/useRoomFilters";
-import { useRooms } from "@/hooks/useRooms";
+import {
+  Button,
+  EmptyState,
+  PageHeader,
+  ResultCount,
+  RoomFilters,
+  RoomGrid,
+  filterRooms,
+} from "@/components";
+import { useBookingsContext } from "@/context";
+import { useRoomFilters, useRooms } from "@/hooks";
 
 const SKELETON_COUNT = 6;
 
 function Rooms() {
   const { rooms, loading, error } = useRooms();
+  const { openCreateBooking } = useBookingsContext();
   const filters = useRoomFilters();
   const visibleRooms = filterRooms(rooms, filters);
-  const isFiltered = visibleRooms.length !== rooms.length;
 
   return (
     <div className="flex flex-col gap-4 sm:gap-5">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-        <div className="min-w-0">
-          <h1 className="text-ink text-xl font-semibold tracking-tight sm:text-2xl">
-            Meeting Rooms
-          </h1>
-          <p className="text-muted mt-1 text-sm leading-relaxed sm:max-w-xl">
-            Find the right meeting room for your next meeting — browse by
-            capacity, equipment, and availability.
-          </p>
-        </div>
-
-        <Button icon={Plus} className="shrink-0 max-sm:w-full">
-          New Booking
-        </Button>
-      </div>
+      <PageHeader
+        title="Meeting Rooms"
+        description="Find the right meeting room for your next meeting — browse by capacity, equipment, and availability."
+        action={
+          <Button
+            icon={Plus}
+            onClick={() => openCreateBooking()}
+            className="shrink-0 max-sm:w-full"
+          >
+            New Booking
+          </Button>
+        }
+      />
 
       <RoomFilters
         search={filters.search}
@@ -45,18 +49,15 @@ function Rooms() {
         onClearFilters={filters.clearFilters}
       />
 
-      <p aria-live="polite" className="text-muted text-sm">
-        {loading ? (
-          "Loading rooms…"
-        ) : error ? (
-          "Rooms unavailable"
-        ) : (
-          <>
-            <span className="text-ink font-medium">{visibleRooms.length}</span>
-            {isFiltered && ` of ${rooms.length}`} meeting rooms
-          </>
-        )}
-      </p>
+      <ResultCount
+        count={visibleRooms.length}
+        total={rooms.length}
+        noun="meeting rooms"
+        loading={loading}
+        loadingLabel="Loading rooms…"
+        error={Boolean(error)}
+        errorLabel="Rooms unavailable"
+      />
 
       {loading && (
         <ul
@@ -83,6 +84,7 @@ function Rooms() {
       {!loading && !error && (
         <RoomGrid
           rooms={visibleRooms}
+          onBook={(room) => openCreateBooking(room.id)}
           emptyState={
             <EmptyState
               icon={SearchX}

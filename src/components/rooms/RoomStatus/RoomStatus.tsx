@@ -1,6 +1,5 @@
 import { CircleCheck, Clock } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
-import type { BadgeTone } from "@/components/ui/Badge";
+import { Badge, type BadgeTone } from "@/components/ui";
 import type { RoomAvailability } from "../type";
 import type { RoomStatusProps } from "./type";
 

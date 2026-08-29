@@ -7,5 +7,6 @@ export type DateInputProps = Omit<
   label: string;
   onValueChange?: (value: string) => void;
   hideLabel?: boolean;
+  error?: string;
   wrapperClassName?: string;
 };

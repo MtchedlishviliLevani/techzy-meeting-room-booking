@@ -1,5 +1,5 @@
 import { useLocation } from "react-router";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/ui";
 import { isActivePath } from "@/lib";
 import { Navbar } from "../ui/Navbar";
 import type { HeaderProps } from "./type";

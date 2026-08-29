@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui";
 import type { EquipmentTagProps } from "./type";
 import { EQUIPMENT_ICONS } from "./data";
 

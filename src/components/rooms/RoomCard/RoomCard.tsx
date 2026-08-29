@@ -1,6 +1,5 @@
 import { MapPin, Users } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { Badge, Button } from "@/components/ui";
 import { EquipmentTag } from "../EquipmentTag";
 import { RoomStatus } from "../RoomStatus";
 import type { RoomCardProps } from "./type";

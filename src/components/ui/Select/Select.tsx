@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { ChevronDown } from "lucide-react";
-import { FIELD_CONTROL, FIELD_LABEL } from "../fieldStyles";
+import { fieldControl, FIELD_LABEL } from "../fieldStyles";
+import { FieldError } from "../FieldError";
 import type { SelectProps } from "./type";
 
 function Select<V extends string = string>({
@@ -9,6 +10,7 @@ function Select<V extends string = string>({
   onValueChange,
   onChange,
   hideLabel = false,
+  error,
   id,
   className = "",
   wrapperClassName = "",
@@ -16,6 +18,7 @@ function Select<V extends string = string>({
 }: SelectProps<V>) {
   const generatedId = useId();
   const selectId = id ?? generatedId;
+  const errorId = `${selectId}-error`;
 
   return (
     <div className={`min-w-0 ${wrapperClassName}`}>
@@ -26,11 +29,13 @@ function Select<V extends string = string>({
       <div className="relative">
         <select
           id={selectId}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? errorId : undefined}
           onChange={(event) => {
             onChange?.(event);
             onValueChange?.(event.target.value as V);
           }}
-          className={`${FIELD_CONTROL} cursor-pointer appearance-none pr-9 pl-3 ${className}`}
+          className={`${fieldControl(Boolean(error))} cursor-pointer appearance-none pr-9 pl-3 ${className}`}
           {...props}
         >
           {options.map((option) => (
@@ -46,6 +51,8 @@ function Select<V extends string = string>({
           aria-hidden="true"
         />
       </div>
+
+      <FieldError id={errorId} message={error} />
     </div>
   );
 }

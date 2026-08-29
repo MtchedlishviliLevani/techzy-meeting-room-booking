@@ -1,4 +1,4 @@
-import type { CheckboxOption } from "@/components/ui/CheckboxGroup";
+import type { CheckboxOption } from "@/components/ui";
 import { EQUIPMENT_ICONS } from "../EquipmentTag";
 
 export const CAPACITY_OPTIONS = [

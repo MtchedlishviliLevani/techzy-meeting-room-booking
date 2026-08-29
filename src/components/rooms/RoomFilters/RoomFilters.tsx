@@ -1,10 +1,12 @@
 import { RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-import { CheckboxGroup } from "@/components/ui/CheckboxGroup";
-import { FilterPanel } from "@/components/ui/FilterPanel";
-import { SearchInput } from "@/components/ui/SearchInput";
-import { SegmentedControl } from "@/components/ui/SegmentedControl";
-import { Select } from "@/components/ui/Select";
+import {
+  Button,
+  CheckboxGroup,
+  FilterPanel,
+  SearchInput,
+  SegmentedControl,
+  Select,
+} from "@/components/ui";
 import type { RoomFiltersProps } from "./type";
 import {
   AVAILABILITY_OPTIONS,

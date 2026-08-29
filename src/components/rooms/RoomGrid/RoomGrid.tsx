@@ -1,5 +1,5 @@
 import { SearchX } from "lucide-react";
-import { EmptyState } from "@/components/ui/EmptyState";
+import { EmptyState } from "@/components/ui";
 import { RoomCard } from "../RoomCard";
 import type { RoomGridProps } from "./type";
 

@@ -1,5 +1,6 @@
 import { useId } from "react";
-import { FIELD_CONTROL, FIELD_LABEL } from "../fieldStyles";
+import { fieldControl, FIELD_LABEL } from "../fieldStyles";
+import { FieldError } from "../FieldError";
 import type { DateInputProps } from "./type";
 
 function DateInput({
@@ -7,6 +8,7 @@ function DateInput({
   onValueChange,
   onChange,
   hideLabel = false,
+  error,
   id,
   className = "",
   wrapperClassName = "",
@@ -14,6 +16,7 @@ function DateInput({
 }: DateInputProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
+  const errorId = `${inputId}-error`;
 
   return (
     <div className={`min-w-0 ${wrapperClassName}`}>
@@ -24,13 +27,17 @@ function DateInput({
       <input
         id={inputId}
         type="date"
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
         onChange={(event) => {
           onChange?.(event);
           onValueChange?.(event.target.value);
         }}
-        className={`${FIELD_CONTROL} px-3 ${className}`}
+        className={`${fieldControl(Boolean(error))} px-3 ${className}`}
         {...props}
       />
+
+      <FieldError id={errorId} message={error} />
     </div>
   );
 }
