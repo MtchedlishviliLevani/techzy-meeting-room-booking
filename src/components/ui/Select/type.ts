@@ -15,5 +15,6 @@ export type SelectProps<V extends string = string> = Omit<
   onValueChange?: (value: V) => void;
   
   hideLabel?: boolean;
+  error?: string;
   wrapperClassName?: string;
 };
