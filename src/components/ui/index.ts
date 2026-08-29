@@ -5,6 +5,8 @@ export * from "./Card";
 export * from "./CheckboxGroup";
 export * from "./DateInput";
 export * from "./EmptyState";
+export * from "./FieldError";
+export * from "./fieldStyles";
 export * from "./FilterPanel";
 export * from "./Navbar";
 export * from "./SearchInput";
