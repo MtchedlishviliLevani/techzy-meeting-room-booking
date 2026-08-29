@@ -4,3 +4,4 @@ export * from "./filterBookings";
 export * from "./resolveBookings";
 export * from "./sortBookings";
 export * from "./type";
+export * from "./validateBooking";
