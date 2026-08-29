@@ -1,5 +1,6 @@
 export * from "./bookingDates";
 export * from "./BookingFilters";
+export * from "./BookingStatus";
 export * from "./filterBookings";
 export * from "./getBookingActions";
 export * from "./resolveBookings";
