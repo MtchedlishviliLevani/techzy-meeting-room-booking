@@ -26,7 +26,7 @@ function Avatar({ src, userName, className = "" }: AvatarProps) {
       role="img"
       aria-label={userName}
       title={userName}
-      className={`${AVATAR_CLASS} ${className} bg-header-accent/25 text-surface inline-flex items-center justify-center text-xs font-semibold sm:text-sm`}
+      className={`${AVATAR_CLASS} ${className} bg-success text-surface inline-flex items-center justify-center text-xs font-semibold sm:text-sm`}
     >
       {toInitials(userName)}
     </span>
