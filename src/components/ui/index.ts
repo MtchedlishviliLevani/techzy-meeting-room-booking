@@ -11,6 +11,7 @@ export * from "./fieldStyles";
 export * from "./FilterPanel";
 export * from "./Modal";
 export * from "./Navbar";
+export * from "./PageHeader";
 export * from "./SearchInput";
 export * from "./SegmentedControl";
 export * from "./Select";
