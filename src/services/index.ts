@@ -1,2 +1,3 @@
+export { getEmployees } from "./employees";
 export { getRooms } from "./rooms";
-export type { Room } from "./type";
+export type { Employee, Room } from "./type";

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "employee-001",
+    "name": "Alex Morgan",
+    "email": "alex.morgan@example.com",
+    "role": "Engineering Manager",
+    "department": "Engineering"
+  },
+  {
+    "id": "employee-002",
+    "name": "Emma Carter",
+    "email": "emma.carter@example.com",
+    "role": "Product Designer",
+    "department": "Design"
+  },
+  {
+    "id": "employee-003",
+    "name": "Daniel Brooks",
+    "email": "daniel.brooks@example.com",
+    "role": "Finance Lead",
+    "department": "Finance"
+  },
+  {
+    "id": "employee-004",
+    "name": "Sophia Bennett",
+    "email": "sophia.bennett@example.com",
+    "role": "Talent Partner",
+    "department": "People"
+  },
+  {
+    "id": "employee-005",
+    "name": "Michael Turner",
+    "email": "michael.turner@example.com",
+    "role": "Product Manager",
+    "department": "Product"
+  },
+  {
+    "id": "employee-006",
+    "name": "Olivia Parker",
+    "email": "olivia.parker@example.com",
+    "role": "Marketing Lead",
+    "department": "Marketing"
+  },
+  {
+    "id": "employee-007",
+    "name": "James Wilson",
+    "email": "james.wilson@example.com",
+    "role": "Frontend Engineer",
+    "department": "Engineering"
+  },
+  {
+    "id": "employee-008",
+    "name": "Charlotte Evans",
+    "email": "charlotte.evans@example.com",
+    "role": "Design Lead",
+    "department": "Design"
+  },
+  {
+    "id": "employee-009",
+    "name": "William Harris",
+    "email": "william.harris@example.com",
+    "role": "UX Researcher",
+    "department": "Design"
+  },
+  {
+    "id": "employee-010",
+    "name": "Amelia Collins",
+    "email": "amelia.collins@example.com",
+    "role": "Backend Engineer",
+    "department": "Engineering"
+  },
+  {
+    "id": "employee-011",
+    "name": "Benjamin Reed",
+    "email": "benjamin.reed@example.com",
+    "role": "Account Executive",
+    "department": "Sales"
+  },
+  {
+    "id": "employee-012",
+    "name": "Grace Mitchell",
+    "email": "grace.mitchell@example.com",
+    "role": "Engineering Lead",
+    "department": "Engineering"
+  },
+  {
+    "id": "employee-013",
+    "name": "Henry Foster",
+    "email": "henry.foster@example.com",
+    "role": "Content Strategist",
+    "department": "Marketing"
+  },
+  {
+    "id": "employee-014",
+    "name": "Ella Richardson",
+    "email": "ella.richardson@example.com",
+    "role": "Social Media Manager",
+    "department": "Marketing"
+  },
+  {
+    "id": "employee-015",
+    "name": "Samuel Cooper",
+    "email": "samuel.cooper@example.com",
+    "role": "QA Engineer",
+    "department": "Engineering"
+  },
+  {
+    "id": "employee-016",
+    "name": "Mia Anderson",
+    "email": "mia.anderson@example.com",
+    "role": "Product Designer",
+    "department": "Design"
+  },
+  {
+    "id": "employee-017",
+    "name": "Lucas Murphy",
+    "email": "lucas.murphy@example.com",
+    "role": "Data Analyst",
+    "department": "Data"
+  },
+  {
+    "id": "employee-018",
+    "name": "Chloe Bailey",
+    "email": "chloe.bailey@example.com",
+    "role": "Finance Analyst",
+    "department": "Finance"
+  },
+  {
+    "id": "employee-019",
+    "name": "Alexander Gray",
+    "email": "alexander.gray@example.com",
+    "role": "Accountant",
+    "department": "Finance"
+  },
+  {
+    "id": "employee-020",
+    "name": "Isabella Ward",
+    "email": "isabella.ward@example.com",
+    "role": "Office Manager",
+    "department": "Operations"
+  }
+]
