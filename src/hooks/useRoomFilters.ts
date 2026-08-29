@@ -8,13 +8,11 @@ import {
   CAPACITY_OPTIONS,
   EQUIPMENT_OPTIONS,
   ROOM_TYPE_OPTIONS,
-} from "@/components/rooms";
-import type {
-  AvailabilityFilter,
-  CapacityFilter,
-  EquipmentFilter,
-  RoomTypeFilter,
-} from "@/components/rooms";
+  type AvailabilityFilter,
+  type CapacityFilter,
+  type EquipmentFilter,
+  type RoomTypeFilter,
+} from "@/components";
 import { readOption } from "@/lib";
 
 const PARAM = {
