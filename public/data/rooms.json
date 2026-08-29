@@ -1,0 +1,98 @@
+[
+  {
+    "id": "room-atlas",
+    "name": "Atlas",
+    "capacity": 12,
+    "location": "3rd Floor",
+    "type": "conference",
+    "equipment": ["TV", "Whiteboard", "Video Conferencing", "HDMI"],
+    "description": "Spacious conference room suitable for team meetings, workshops, and presentations."
+  },
+  {
+    "id": "room-mercury",
+    "name": "Mercury",
+    "capacity": 8,
+    "location": "3rd Floor",
+    "type": "meeting",
+    "equipment": ["TV", "Whiteboard", "HDMI"],
+    "description": "Comfortable meeting room for small to medium-sized teams."
+  },
+  {
+    "id": "room-nova",
+    "name": "Nova",
+    "capacity": 16,
+    "location": "2nd Floor",
+    "type": "conference",
+    "equipment": ["Projector", "Whiteboard", "Video Conferencing", "HDMI"],
+    "description": "Large conference room designed for presentations and collaborative meetings."
+  },
+  {
+    "id": "room-orion",
+    "name": "Orion",
+    "capacity": 6,
+    "location": "2nd Floor",
+    "type": "meeting",
+    "equipment": ["TV", "Whiteboard", "Video Conferencing"],
+    "description": "Quiet meeting room ideal for team discussions and remote meetings."
+  },
+  {
+    "id": "room-luna",
+    "name": "Luna",
+    "capacity": 4,
+    "location": "1st Floor",
+    "type": "huddle",
+    "equipment": ["TV", "Whiteboard"],
+    "description": "Small huddle room for quick discussions and one-on-one meetings."
+  },
+  {
+    "id": "room-polaris",
+    "name": "Polaris",
+    "capacity": 20,
+    "location": "4th Floor",
+    "type": "conference",
+    "equipment": [
+      "Projector",
+      "TV",
+      "Whiteboard",
+      "Video Conferencing",
+      "HDMI"
+    ],
+    "description": "Our largest meeting space, suitable for company-wide meetings and presentations."
+  },
+  {
+    "id": "room-venus",
+    "name": "Venus",
+    "capacity": 10,
+    "location": "4th Floor",
+    "type": "meeting",
+    "equipment": ["TV", "Whiteboard", "HDMI"],
+    "description": "Modern meeting room suitable for team meetings and client discussions."
+  },
+  {
+    "id": "room-saturn",
+    "name": "Saturn",
+    "capacity": 14,
+    "location": "2nd Floor",
+    "type": "workshop",
+    "equipment": ["Projector", "Whiteboard", "TV", "HDMI"],
+    "description": "Flexible room with extra space for workshops, brainstorming, and training sessions."
+  },
+  {
+    "id": "room-comet",
+    "name": "Comet",
+    "capacity": 2,
+    "location": "1st Floor",
+    "type": "huddle",
+    "equipment": ["TV", "HDMI"],
+    "description": "Compact private room designed for one-on-one meetings and focused conversations."
+  },
+  {
+    "id": "room-eclipse",
+    "name": "Eclipse",
+    "capacity": 6,
+    "location": "3rd Floor",
+    "type": "meeting",
+    "equipment": ["TV", "Whiteboard", "HDMI", "Video Conferencing"],
+    "description": "Bright and quiet room suitable for small team meetings and video calls."
+  }
+]
