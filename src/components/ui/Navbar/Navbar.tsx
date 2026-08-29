@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, Search, X } from "lucide-react";
-import { TechzyLogo } from "@/components/ui/TechzyLogo";
-import { Avatar } from "@/components/ui/Avatar";
+import { TechzyLogo } from "../TechzyLogo";
+import { Avatar } from "../Avatar";
 import { isActivePath } from "@/lib";
 import type { ActionItem, NavbarProps } from "./type";
 import { NAV_ITEMS } from "./data";
