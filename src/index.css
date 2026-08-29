@@ -1,28 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces */
   --color-background: #edeee8;
   --color-surface: #f8f8f4;
   --color-raised: #ffffff;
   --color-header: #30352d;
   --color-header-accent: #94a183;
 
-  /* Brand */
   --color-primary: #68755a;
   --color-primary-hover: #566348;
   --color-primary-subtle: #e2e6da;
 
-  /* Text */
   --color-ink: #292b27;
   --color-muted: #65685f;
 
-  /* Lines */
   --color-border: #d3d5cc;
   --color-border-strong: #858c78;
   --color-focus: #566348;
 
-  /* State */
   --color-success: #3f6b5a;
   --color-warning: #8a6a38;
   --color-error: #a0524d;
@@ -38,5 +33,58 @@
   :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    background-clip: content-box;
+    border: 3px solid transparent;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-border-strong);
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border-strong) transparent;
+    }
+  }
+
+  button:not(:disabled),
+  summary,
+  [role="menuitem"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role="menuitem"]:disabled {
+    cursor: not-allowed;
+  }
+
+  label:has(> input[type="checkbox"], > input[type="radio"]) {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
   }
 }
