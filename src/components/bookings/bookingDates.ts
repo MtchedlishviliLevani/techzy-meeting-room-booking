@@ -10,7 +10,7 @@ export const todayISO = () => toISODate(new Date());
 
 export const nowTime = () => new Date().toTimeString().slice(0, 5);
 
-function parseISODate(value: string): Date {
+export function parseISODate(value: string): Date {
   const [year, month, day] = value.split("-").map(Number);
   return new Date(year, month - 1, day);
 }
