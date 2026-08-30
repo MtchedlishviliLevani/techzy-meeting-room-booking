@@ -3,6 +3,7 @@ import type {
   BookingDateFilter,
   BookingStatusFilter,
 } from "./BookingFilters/data";
+import type { BookingFormMode } from "./BookingForm/type";
 
 export type BookingState = "upcoming" | "completed" | "cancelled";
 
@@ -56,7 +57,7 @@ export type ValidateBookingOptions = {
   rooms: readonly Room[];
   bookings: readonly Booking[];
   bookingId?: string;
-  allowPastStart?: boolean;
+  mode?: BookingFormMode;
   today?: string;
   now?: string;
 };

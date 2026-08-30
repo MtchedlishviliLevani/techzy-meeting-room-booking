@@ -34,7 +34,7 @@ export function useBookingForm({
     rooms,
     bookings,
     bookingId: booking?.id,
-    allowPastStart: mode === "edit",
+    mode,
     today,
   });
 

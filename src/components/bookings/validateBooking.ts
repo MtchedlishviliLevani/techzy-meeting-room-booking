@@ -29,7 +29,7 @@ export function validateBooking(
     rooms,
     bookings,
     bookingId,
-    allowPastStart = false,
+    mode = "create",
     today = todayISO(),
     now = nowTime(),
   }: ValidateBookingOptions,
@@ -50,13 +50,11 @@ export function validateBooking(
     errors.date = "That date has passed — pick today or a later date.";
   }
 
+  const isToday = values.date === today;
+
   if (values.startTime === "") {
     errors.startTime = "Add a start time.";
-  } else if (
-    !allowPastStart &&
-    values.date === today &&
-    values.startTime < now
-  ) {
+  } else if (mode === "create" && isToday && values.startTime < now) {
     errors.startTime = `That time has already passed — it is ${now}.`;
   }
 
