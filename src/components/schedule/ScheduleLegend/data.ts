@@ -1,14 +1,9 @@
-import { BOOKING_STATUS_META } from "../../bookings";
+import { BOOKING_STATUS_META, type BookingState } from "../../bookings";
 import { SCHEDULE_BLOCK_TONE } from "../ScheduleBooking";
-import type { BookingStatus } from "@/services";
 
-const LEGEND_STATUSES: BookingStatus[] = [
-  "confirmed",
-  "completed",
-  "cancelled",
-];
+const LEGEND_STATES: BookingState[] = ["upcoming", "completed", "cancelled"];
 
-export const SCHEDULE_LEGEND_ITEMS = LEGEND_STATUSES.map((status) => ({
+export const SCHEDULE_LEGEND_ITEMS = LEGEND_STATES.map((status) => ({
   status,
   label: BOOKING_STATUS_META[status].label,
   icon: BOOKING_STATUS_META[status].icon,
