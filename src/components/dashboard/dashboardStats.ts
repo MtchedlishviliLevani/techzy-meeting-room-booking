@@ -1,4 +1,4 @@
-import { byStartTime, nowTime, todayISO } from "../bookings";
+import { byStartTime, todayISO } from "../bookings";
 import type { BookingListItem } from "../bookings";
 import { availableRooms } from "../rooms";
 import type { RoomListItem } from "../rooms";
@@ -15,23 +15,12 @@ export function getTodayBookings(
     .sort(byStartTime);
 }
 
-export function isUpcoming(
-  { booking }: BookingListItem,
-  today = todayISO(),
-  now = nowTime(),
-): boolean {
-  if (booking.status !== "confirmed") return false;
-  if (booking.date > today) return true;
-
-  return booking.date === today && booking.endTime > now;
-}
+export const isUpcoming = (item: BookingListItem) => item.state === "upcoming";
 
 export function getUpcomingBookings(
   items: readonly BookingListItem[],
-  today = todayISO(),
-  now = nowTime(),
 ): BookingListItem[] {
-  return items.filter((item) => isUpcoming(item, today, now)).sort(byStartTime);
+  return items.filter(isUpcoming).sort(byStartTime);
 }
 
 export function getDashboardStats(
