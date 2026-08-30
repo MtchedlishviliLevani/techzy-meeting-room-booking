@@ -12,7 +12,7 @@ import {
   type BookingFilterControls,
   type BookingStatusFilter,
 } from "@/components";
-import { readOption } from "@/lib";
+import { isISODate, readOption } from "@/lib";
 
 const PARAM = {
   search: "q",
@@ -21,8 +21,6 @@ const PARAM = {
   organizer: "organizer",
   date: "date",
 } as const;
-
-const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 export function useBookingFilters(): BookingFilterControls {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,7 +38,7 @@ export function useBookingFilters(): BookingFilterControls {
 
   
   const rawDate = searchParams.get(PARAM.date) ?? "";
-  const isCustomDate = ISO_DATE.test(rawDate);
+  const isCustomDate = isISODate(rawDate);
   const dateRange = isCustomDate
     ? CUSTOM_DATE
     : readOption(rawDate, BOOKING_DATE_OPTIONS, ALL_DATES);
