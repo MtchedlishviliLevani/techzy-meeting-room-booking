@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Plus, SearchX, TriangleAlert } from "lucide-react";
 import {
   Button,
   EmptyState,
   PageHeader,
   ResultCount,
+  RoomDetails,
   RoomFilters,
   RoomGrid,
   filterRooms,
   withAvailability,
+  type RoomListItem,
 } from "@/components";
 import { useBookingsContext } from "@/context";
 import { useRoomFilters } from "@/hooks";
@@ -20,11 +23,14 @@ function Rooms() {
     bookings,
     loading,
     error,
+    today,
+    now,
     openCreateBooking,
   } = useBookingsContext();
   const filters = useRoomFilters();
+  const [selectedRoom, setSelectedRoom] = useState<RoomListItem | null>(null);
 
-  const rooms = withAvailability(allRooms, bookings);
+  const rooms = withAvailability(allRooms, bookings, today, now);
   const visibleRooms = filterRooms(rooms, filters);
 
   return (
@@ -93,6 +99,7 @@ function Rooms() {
         <RoomGrid
           rooms={visibleRooms}
           onBook={(room) => openCreateBooking(room.id)}
+          onViewDetails={setSelectedRoom}
           emptyState={
             <EmptyState
               icon={SearchX}
@@ -107,6 +114,15 @@ function Rooms() {
           }
         />
       )}
+
+      <RoomDetails
+        room={selectedRoom}
+        onClose={() => setSelectedRoom(null)}
+        onBook={(room) => {
+          setSelectedRoom(null);
+          openCreateBooking(room.id);
+        }}
+      />
     </div>
   );
 }
