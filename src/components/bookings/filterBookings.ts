@@ -30,7 +30,7 @@ export function filterBookings(
 ): BookingListItem[] {
   const search = filters.search.trim().toLowerCase();
 
-  return items.filter(({ booking, room, organizer }) => {
+  return items.filter(({ booking, state, room, organizer }) => {
     const matchesSearch =
       search === "" ||
       booking.title.toLowerCase().includes(search) ||
@@ -38,7 +38,7 @@ export function filterBookings(
       (organizer?.name.toLowerCase().includes(search) ?? false);
 
     const matchesStatus =
-      filters.status === ALL_STATUSES || booking.status === filters.status;
+      filters.status === ALL_STATUSES || state === filters.status;
 
     const matchesRoom =
       filters.roomId === ALL_ROOMS || booking.roomId === filters.roomId;

@@ -1,6 +1,6 @@
-import type { BookingStatus as Status } from "@/services";
+import type { BookingState } from "../type";
 
 export type BookingStatusProps = {
-  status: Status;
+  status: BookingState;
   className?: string;
 };

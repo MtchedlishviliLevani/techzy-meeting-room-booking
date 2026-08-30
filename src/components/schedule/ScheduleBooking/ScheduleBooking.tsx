@@ -18,14 +18,13 @@ function ScheduleBooking({
   onSelect,
   className = "",
 }: ScheduleBookingProps) {
-  const { booking, room, organizer } = item;
-  const { label: statusLabel, icon: StatusIcon } =
-    BOOKING_STATUS_META[booking.status];
+  const { booking, state, room, organizer } = item;
+  const { label: statusLabel, icon: StatusIcon } = BOOKING_STATUS_META[state];
 
   const time = formatTimeRange(booking.startTime, booking.endTime);
   const roomName = room?.name ?? "Unknown room";
   const organizerName = organizer?.name ?? "Unknown organizer";
-  const isCancelled = booking.status === "cancelled";
+  const isCancelled = state === "cancelled";
 
   const details = [
     showDate ? formatBookingDate(booking.date) : null,
@@ -47,7 +46,7 @@ function ScheduleBooking({
       >
         <span
           aria-hidden="true"
-          className={`h-9 w-1 shrink-0 rounded-full ${SCHEDULE_BAR_TONE[booking.status]}`}
+          className={`h-9 w-1 shrink-0 rounded-full ${SCHEDULE_BAR_TONE[state]}`}
         />
 
         <span className="min-w-0 flex-1">
@@ -78,7 +77,7 @@ function ScheduleBooking({
       onClick={() => onSelect?.(item)}
       title={`${booking.title} · ${time}`}
       aria-label={`${booking.title}. ${details}. View booking details`}
-      className={`flex h-full w-full flex-col overflow-hidden rounded-lg border px-2 py-1 text-left transition-colors duration-200 ${FOCUS} ${SCHEDULE_BLOCK_TONE[booking.status]} ${className}`}
+      className={`flex h-full w-full flex-col overflow-hidden rounded-lg border px-2 py-1 text-left transition-colors duration-200 ${FOCUS} ${SCHEDULE_BLOCK_TONE[state]} ${className}`}
     >
       <span className="flex w-full items-center gap-1">
         <StatusIcon className="size-3 shrink-0" strokeWidth={2} aria-hidden="true" />

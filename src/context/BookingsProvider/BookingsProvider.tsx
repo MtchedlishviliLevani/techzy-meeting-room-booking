@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BookingDialogs, type BookingDialog } from "@/components";
-import { useBookings, useEmployees, useRooms } from "@/hooks";
+import { useBookings, useEmployees, useNow, useRooms } from "@/hooks";
 import { BookingsContext } from "./context";
 import type { BookingsProviderProps } from "./type";
 
@@ -20,6 +20,8 @@ function BookingsProvider({ children }: BookingsProviderProps) {
     error: employeesError,
   } = useEmployees();
 
+  const { today, now } = useNow();
+
   const [dialog, setDialog] = useState<BookingDialog | null>(null);
   const closeDialog = () => setDialog(null);
 
@@ -29,6 +31,8 @@ function BookingsProvider({ children }: BookingsProviderProps) {
         bookings,
         rooms,
         employees,
+        today,
+        now,
         loading: bookingsLoading || roomsLoading || employeesLoading,
         error: bookingsError ?? roomsError ?? employeesError,
         openCreateBooking: (roomId) => setDialog({ type: "create", roomId }),

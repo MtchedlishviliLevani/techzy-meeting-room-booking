@@ -16,7 +16,7 @@ export type Employee = {
   department: string;
 };
 
-export type BookingStatus = "confirmed" | "completed" | "cancelled";
+export type BookingStatus = "confirmed" | "cancelled";
 
 export type Booking = {
   id: string;

@@ -1,22 +1,6 @@
-const MS_PER_DAY = 24 * 60 * 60 * 1000;
+import { daysBetween, parseISODate, todayISO, toISODate } from "@/lib";
 
-export function toISODate(date: Date): string {
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${date.getFullYear()}-${month}-${day}`;
-}
-
-export const todayISO = () => toISODate(new Date());
-
-export const nowTime = () => new Date().toTimeString().slice(0, 5);
-
-export function parseISODate(value: string): Date {
-  const [year, month, day] = value.split("-").map(Number);
-  return new Date(year, month - 1, day);
-}
-
-const dayDiff = (date: string, from: string) =>
-  Math.round((parseISODate(date).getTime() - parseISODate(from).getTime()) / MS_PER_DAY);
+export { nowTime, parseISODate, toISODate, todayISO } from "@/lib";
 
 export function weekRange(today: string) {
   const date = parseISODate(today);
@@ -32,7 +16,7 @@ export function weekRange(today: string) {
 }
 
 export function formatBookingDate(date: string, today = todayISO()): string {
-  const diff = dayDiff(date, today);
+  const diff = daysBetween(today, date);
   if (diff === 0) return "Today";
   if (diff === 1) return "Tomorrow";
   if (diff === -1) return "Yesterday";

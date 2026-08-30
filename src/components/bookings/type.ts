@@ -3,10 +3,13 @@ import type {
   BookingDateFilter,
   BookingStatusFilter,
 } from "./BookingFilters/data";
+import type { BookingFormMode } from "./BookingForm/type";
+
+export type BookingState = "upcoming" | "completed" | "cancelled";
 
 export type BookingListItem = {
-  
   booking: Booking;
+  state: BookingState;
   room?: Room;
   organizer?: Employee;
   attendees: Employee[];
@@ -53,10 +56,8 @@ export type BookingFormErrors = Partial<Record<keyof BookingFormValues, string>>
 export type ValidateBookingOptions = {
   rooms: readonly Room[];
   bookings: readonly Booking[];
-  
   bookingId?: string;
-  
-  allowPastStart?: boolean;
+  mode?: BookingFormMode;
   today?: string;
   now?: string;
 };

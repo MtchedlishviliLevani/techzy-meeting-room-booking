@@ -9,8 +9,8 @@ import type { BookingRowProps } from "./type";
 const CELL = "px-4 py-3.5 align-middle";
 
 function BookingRow({ booking: item, today, ...actions }: BookingRowProps) {
-  const { booking, room, organizer, attendees } = item;
-  const isCancelled = booking.status === "cancelled";
+  const { booking, state, room, organizer, attendees } = item;
+  const isCancelled = state === "cancelled";
 
   return (
     <tr className="border-border hover:bg-primary-subtle/40 border-t transition-colors duration-200">
@@ -56,7 +56,7 @@ function BookingRow({ booking: item, today, ...actions }: BookingRowProps) {
       </td>
 
       <td className={CELL}>
-        <BookingStatus status={booking.status} />
+        <BookingStatus status={state} />
       </td>
 
       <td className={`${CELL} text-right`}>

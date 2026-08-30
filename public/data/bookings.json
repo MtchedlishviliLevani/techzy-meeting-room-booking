@@ -11,9 +11,9 @@
       "employee-003",
       "employee-004"
     ],
-    "date": "2026-08-29",
-    "startTime": "10:00",
-    "endTime": "11:00",
+    "date": "2026-08-30",
+    "startTime": "18:00",
+    "endTime": "19:00",
     "status": "confirmed"
   },
   {
@@ -22,14 +22,10 @@
     "description": "Planning session for the upcoming product sprint.",
     "roomId": "room-orion",
     "organizerId": "employee-005",
-    "attendeeIds": [
-      "employee-005",
-      "employee-006",
-      "employee-007"
-    ],
-    "date": "2026-08-29",
-    "startTime": "11:30",
-    "endTime": "13:00",
+    "attendeeIds": ["employee-005", "employee-006", "employee-007"],
+    "date": "2026-08-30",
+    "startTime": "18:20",
+    "endTime": "19:00",
     "status": "confirmed"
   },
   {
@@ -38,11 +34,7 @@
     "description": "Review the latest interface designs and prototypes.",
     "roomId": "room-nova",
     "organizerId": "employee-008",
-    "attendeeIds": [
-      "employee-008",
-      "employee-009",
-      "employee-010"
-    ],
+    "attendeeIds": ["employee-008", "employee-009", "employee-010"],
     "date": "2026-08-29",
     "startTime": "14:00",
     "endTime": "15:00",
@@ -71,11 +63,7 @@
     "description": "Short daily marketing team standup.",
     "roomId": "room-luna",
     "organizerId": "employee-006",
-    "attendeeIds": [
-      "employee-006",
-      "employee-013",
-      "employee-014"
-    ],
+    "attendeeIds": ["employee-006", "employee-013", "employee-014"],
     "date": "2026-08-30",
     "startTime": "09:30",
     "endTime": "10:00",
@@ -105,11 +93,7 @@
     "description": "Monthly finance review and budget discussion.",
     "roomId": "room-orion",
     "organizerId": "employee-003",
-    "attendeeIds": [
-      "employee-003",
-      "employee-018",
-      "employee-019"
-    ],
+    "attendeeIds": ["employee-003", "employee-018", "employee-019"],
     "date": "2026-08-30",
     "startTime": "14:00",
     "endTime": "15:30",
@@ -121,10 +105,7 @@
     "description": "Technical interview for a frontend developer candidate.",
     "roomId": "room-nova",
     "organizerId": "employee-004",
-    "attendeeIds": [
-      "employee-004",
-      "employee-020"
-    ],
+    "attendeeIds": ["employee-004", "employee-020"],
     "date": "2026-08-31",
     "startTime": "10:00",
     "endTime": "11:00",
@@ -208,11 +189,7 @@
     "description": "Planning upcoming content and campaign activities.",
     "roomId": "room-luna",
     "organizerId": "employee-013",
-    "attendeeIds": [
-      "employee-013",
-      "employee-014",
-      "employee-017"
-    ],
+    "attendeeIds": ["employee-013", "employee-014", "employee-017"],
     "date": "2026-09-02",
     "startTime": "11:00",
     "endTime": "12:00",
@@ -224,11 +201,7 @@
     "description": "Review API changes and integration requirements.",
     "roomId": "room-nova",
     "organizerId": "employee-003",
-    "attendeeIds": [
-      "employee-003",
-      "employee-004",
-      "employee-020"
-    ],
+    "attendeeIds": ["employee-003", "employee-004", "employee-020"],
     "date": "2026-09-02",
     "startTime": "15:00",
     "endTime": "16:30",
@@ -276,11 +249,7 @@
     "description": "Planning session for the next quarter's budget.",
     "roomId": "room-atlas",
     "organizerId": "employee-018",
-    "attendeeIds": [
-      "employee-018",
-      "employee-019",
-      "employee-005"
-    ],
+    "attendeeIds": ["employee-018", "employee-019", "employee-005"],
     "date": "2026-09-04",
     "startTime": "09:30",
     "endTime": "11:00",
@@ -292,10 +261,7 @@
     "description": "Private one-on-one meetings.",
     "roomId": "room-comet",
     "organizerId": "employee-012",
-    "attendeeIds": [
-      "employee-012",
-      "employee-017"
-    ],
+    "attendeeIds": ["employee-012", "employee-017"],
     "date": "2026-09-04",
     "startTime": "14:00",
     "endTime": "15:00",
@@ -307,15 +273,11 @@
     "description": "Review of the previous sprint's results.",
     "roomId": "room-nova",
     "organizerId": "employee-010",
-    "attendeeIds": [
-      "employee-010",
-      "employee-015",
-      "employee-016"
-    ],
+    "attendeeIds": ["employee-010", "employee-015", "employee-016"],
     "date": "2026-08-27",
     "startTime": "11:00",
     "endTime": "12:00",
-    "status": "completed"
+    "status": "confirmed"
   },
   {
     "id": "booking-020",
@@ -323,13 +285,52 @@
     "description": "Design sync that was cancelled.",
     "roomId": "room-luna",
     "organizerId": "employee-008",
-    "attendeeIds": [
-      "employee-008",
-      "employee-009"
-    ],
+    "attendeeIds": ["employee-008", "employee-009"],
     "date": "2026-08-28",
     "startTime": "15:00",
     "endTime": "16:00",
+    "status": "cancelled"
+  },
+  {
+    "id": "booking-021",
+    "title": "Morning Standup",
+    "description": "Quick cross-team sync to start the day.",
+    "roomId": "room-mercury",
+    "organizerId": "employee-011",
+    "attendeeIds": ["employee-011", "employee-012", "employee-013"],
+    "date": "2026-08-30",
+    "startTime": "08:30",
+    "endTime": "09:00",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-022",
+    "title": "Quarterly Business Review",
+    "description": "End-of-day review of quarterly results with department leads.",
+    "roomId": "room-venus",
+    "organizerId": "employee-003",
+    "attendeeIds": [
+      "employee-003",
+      "employee-004",
+      "employee-009",
+      "employee-014",
+      "employee-017"
+    ],
+    "date": "2026-08-30",
+    "startTime": "16:00",
+    "endTime": "18:00",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-023",
+    "title": "Vendor Demo",
+    "description": "Tooling demo \u2014 cancelled after the vendor rescheduled.",
+    "roomId": "room-eclipse",
+    "organizerId": "employee-016",
+    "attendeeIds": ["employee-016", "employee-018"],
+    "date": "2026-09-01",
+    "startTime": "11:00",
+    "endTime": "12:00",
     "status": "cancelled"
   }
 ]

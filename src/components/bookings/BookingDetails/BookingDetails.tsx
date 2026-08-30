@@ -25,12 +25,12 @@ function Detail({ icon: Icon, label, value, hint }: BookingDetailProps) {
 }
 
 function BookingDetails({ booking: item, className = "" }: BookingDetailsProps) {
-  const { booking, room, organizer, attendees } = item;
+  const { booking, state, room, organizer, attendees } = item;
 
   return (
     <div className={`flex flex-col gap-5 ${className}`}>
       <div className="flex flex-wrap items-center gap-2">
-        <BookingStatus status={booking.status} />
+        <BookingStatus status={state} />
         {room && (
           <span className="text-muted text-xs">
             {room.name} · up to {countLabel(room.capacity, "person", "people")}

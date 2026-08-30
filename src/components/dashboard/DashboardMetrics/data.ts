@@ -3,8 +3,7 @@ import { countLabel, pluralize } from "@/lib";
 import type { DashboardStats } from "../type";
 import type { MetricTile } from "./type";
 
-export const METRICS_GRID =
-  "grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4";
+export const METRICS_GRID = "grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4";
 
 export function toMetricTiles({
   totalRooms,
@@ -13,7 +12,8 @@ export function toMetricTiles({
   upcomingMeetings,
 }: DashboardStats): MetricTile[] {
   const inUse = totalRooms - availableNow;
-  const utilization = totalRooms === 0 ? 0 : Math.round((inUse / totalRooms) * 100);
+  const utilization =
+    totalRooms === 0 ? 0 : Math.round((inUse / totalRooms) * 100);
 
   return [
     {
@@ -24,7 +24,7 @@ export function toMetricTiles({
       to: "/rooms?availability=available",
     },
     {
-      label: "In use",
+      label: "In use (Now)",
       value: `${utilization}%`,
       detail: `${countLabel(inUse, "room")} occupied`,
       icon: Gauge,
@@ -36,7 +36,7 @@ export function toMetricTiles({
       value: `${upcomingMeetings}`,
       detail: `${pluralize(upcomingMeetings, "meeting")} still to come`,
       icon: CalendarClock,
-      to: "/bookings?status=confirmed",
+      to: "/bookings?status=upcoming",
     },
     {
       label: "Bookings",
