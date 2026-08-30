@@ -1,3 +1,8 @@
 export { default as BookingForm } from "./BookingForm";
-export type { BookingFormMode, BookingFormProps } from "./type";
+export type {
+  BookingFormControls,
+  BookingFormMode,
+  BookingFormOptions,
+  BookingFormProps,
+} from "./type";
 export * from "./data";
