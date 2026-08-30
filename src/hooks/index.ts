@@ -5,6 +5,7 @@ export * from "./useBookings";
 export * from "./useDashboard";
 export * from "./useEmployees";
 export * from "./useModalDialog";
+export * from "./useNow";
 export * from "./useRoomFilters";
 export * from "./useRooms";
 export * from "./useSchedule";
