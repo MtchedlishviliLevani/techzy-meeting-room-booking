@@ -1,2 +1,2 @@
 export { default as Modal } from "./Modal";
-export type { ModalProps, ModalSize } from "./type";
+export type { ModalDialog, ModalProps, ModalSize } from "./type";

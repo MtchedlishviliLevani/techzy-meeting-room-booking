@@ -1,4 +1,3 @@
-import { useRef, useState, type FormEvent } from "react";
 import {
   Button,
   CheckboxGroup,
@@ -9,20 +8,10 @@ import {
   TextInput,
   Textarea,
 } from "@/components/ui";
-import { todayISO } from "../bookingDates";
-import { validateBooking } from "../validateBooking";
-import type { BookingFormErrors, BookingFormValues } from "../type";
+import { useBookingForm } from "@/hooks/useBookingForm";
 import type { BookingFormProps } from "./type";
-import {
-  toEmployeeOptions,
-  toFormValues,
-  toRoomFieldOptions,
-  toggleId,
-} from "./data";
 
 const ATTENDEES_ERROR_ID = "booking-attendees-error";
-
-const NO_ERRORS: BookingFormErrors = {};
 
 function BookingForm({
   mode = "create",
@@ -35,47 +24,25 @@ function BookingForm({
   onCancel,
   className = "",
 }: BookingFormProps) {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [values, setValues] = useState(() =>
-    toFormValues(booking, rooms, employees, defaultRoomId),
-  );
-
-  const today = todayISO();
-  const errors = validateBooking(values, {
-    rooms,
-    bookings,
-    bookingId: booking?.id,
-    allowPastStart: mode === "edit",
+  const {
+    formRef,
+    values,
+    errors,
     today,
+    roomOptions,
+    employeeOptions,
+    setValue,
+    toggleAttendee,
+    handleSubmit,
+  } = useBookingForm({
+    mode,
+    booking,
+    rooms,
+    employees,
+    bookings,
+    defaultRoomId,
+    onSubmit,
   });
-
-  
-  const visible = submitted ? errors : NO_ERRORS;
-  const roomOptions = toRoomFieldOptions(rooms);
-  const employeeOptions = toEmployeeOptions(employees);
-
-  function setValue<K extends keyof BookingFormValues>(
-    key: K,
-    value: BookingFormValues[K],
-  ) {
-    setValues((current) => ({ ...current, [key]: value }));
-  }
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-
-    const firstInvalid = Object.keys(errors)[0];
-
-    if (firstInvalid) {
-      const field = formRef.current?.elements.namedItem(firstInvalid);
-      if (field instanceof HTMLElement) field.focus();
-      return;
-    }
-
-    onSubmit?.(values);
-  }
 
   return (
     <form
@@ -90,7 +57,7 @@ function BookingForm({
           name="title"
           placeholder="e.g. Engineering Weekly Sync"
           value={values.title}
-          error={visible.title}
+          error={errors.title}
           onValueChange={(value) => setValue("title", value)}
           wrapperClassName="sm:col-span-2"
         />
@@ -109,7 +76,7 @@ function BookingForm({
           name="roomId"
           options={roomOptions}
           value={values.roomId}
-          error={visible.roomId}
+          error={errors.roomId}
           onValueChange={(value) => setValue("roomId", value)}
         />
 
@@ -118,7 +85,7 @@ function BookingForm({
           name="date"
           min={mode === "create" ? today : undefined}
           value={values.date}
-          error={visible.date}
+          error={errors.date}
           onValueChange={(value) => setValue("date", value)}
         />
 
@@ -127,7 +94,7 @@ function BookingForm({
           name="startTime"
           type="time"
           value={values.startTime}
-          error={visible.startTime}
+          error={errors.startTime}
           onValueChange={(value) => setValue("startTime", value)}
         />
 
@@ -136,7 +103,7 @@ function BookingForm({
           name="endTime"
           type="time"
           value={values.endTime}
-          error={visible.endTime}
+          error={errors.endTime}
           onValueChange={(value) => setValue("endTime", value)}
         />
 
@@ -145,7 +112,7 @@ function BookingForm({
           name="organizerId"
           options={employeeOptions}
           value={values.organizerId}
-          error={visible.organizerId}
+          error={errors.organizerId}
           onValueChange={(value) => setValue("organizerId", value)}
           wrapperClassName="sm:col-span-2"
         />
@@ -155,8 +122,8 @@ function BookingForm({
         <p className={FIELD_LABEL}>Attendees ({values.attendeeIds.length})</p>
 
         <div
-          className={`max-h-40 overflow-y-auto overscroll-contain rounded-lg border p-2.5 ${
-            visible.attendeeIds ? "border-error" : "border-border"
+          className={`rounded-lg border p-2.5 ${
+            errors.attendeeIds ? "border-error" : "border-border"
           }`}
         >
           <CheckboxGroup
@@ -164,13 +131,11 @@ function BookingForm({
             hideLabel
             options={employeeOptions}
             values={values.attendeeIds}
-            onToggle={(id) =>
-              setValue("attendeeIds", toggleId(values.attendeeIds, id))
-            }
+            onToggle={toggleAttendee}
           />
         </div>
 
-        <FieldError id={ATTENDEES_ERROR_ID} message={visible.attendeeIds} />
+        <FieldError id={ATTENDEES_ERROR_ID} message={errors.attendeeIds} />
       </div>
 
       <div className="border-border flex flex-col-reverse gap-2 border-t pt-4 sm:flex-row sm:justify-end">

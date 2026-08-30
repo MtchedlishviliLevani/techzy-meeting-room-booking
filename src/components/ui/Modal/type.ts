@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode, RefObject } from "react";
 
 export type ModalSize = "sm" | "md" | "lg";
 
@@ -11,4 +11,14 @@ export type ModalProps = {
   size?: ModalSize;
   children: ReactNode;
   className?: string;
+};
+
+export type ModalDialog = {
+  dialogRef: RefObject<HTMLDialogElement | null>;
+  titleId: string;
+  descriptionId: string;
+  dialogHandlers: Pick<
+    ComponentProps<"dialog">,
+    "onCancel" | "onPointerDown" | "onClick"
+  >;
 };

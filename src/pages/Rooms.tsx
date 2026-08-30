@@ -7,16 +7,24 @@ import {
   RoomFilters,
   RoomGrid,
   filterRooms,
+  withAvailability,
 } from "@/components";
 import { useBookingsContext } from "@/context";
-import { useRoomFilters, useRooms } from "@/hooks";
+import { useRoomFilters } from "@/hooks";
 
 const SKELETON_COUNT = 6;
 
 function Rooms() {
-  const { rooms, loading, error } = useRooms();
-  const { openCreateBooking } = useBookingsContext();
+  const {
+    rooms: allRooms,
+    bookings,
+    loading,
+    error,
+    openCreateBooking,
+  } = useBookingsContext();
   const filters = useRoomFilters();
+
+  const rooms = withAvailability(allRooms, bookings);
   const visibleRooms = filterRooms(rooms, filters);
 
   return (
