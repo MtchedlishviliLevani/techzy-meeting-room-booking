@@ -62,6 +62,8 @@ export function validateBooking(
     errors.endTime = "Add an end time.";
   } else if (values.startTime !== "" && values.endTime <= values.startTime) {
     errors.endTime = "The end time must be after the start time.";
+  } else if (mode === "edit" && isToday && values.endTime <= now) {
+    errors.endTime = `That would put the meeting in the past — it is ${now}.`;
   }
 
   if (values.organizerId === "") {
