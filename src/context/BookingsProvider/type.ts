@@ -8,7 +8,9 @@ export type BookingsContextValue = {
   employees: Employee[];
   loading: boolean;
   error: Error | null;
-  
+
+  today: string;
+  now: string;
   openCreateBooking: (roomId?: string) => void;
   openBookingDetails: (item: BookingListItem) => void;
   openEditBooking: (item: BookingListItem) => void;

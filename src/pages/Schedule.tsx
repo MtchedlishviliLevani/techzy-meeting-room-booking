@@ -12,11 +12,9 @@ import {
   WeekSchedule,
   filterScheduleBookings,
   isCurrentPeriod,
-  nowTime,
   resolveBookings,
   schedulePeriod,
   toRoomOptions,
-  todayISO,
 } from "@/components";
 import { useBookingsContext } from "@/context";
 import { useSchedule } from "@/hooks";
@@ -28,15 +26,16 @@ function Schedule() {
     employees,
     loading,
     error,
+    today,
+    now,
     openCreateBooking,
     openBookingDetails,
   } = useBookingsContext();
 
-  const today = todayISO();
   const schedule = useSchedule(today);
   const period = schedulePeriod(schedule.view, schedule.date);
 
-  const bookings = resolveBookings(allBookings, rooms, employees);
+  const bookings = resolveBookings(allBookings, rooms, employees, today, now);
   const visibleBookings = filterScheduleBookings(
     bookings,
     period,
@@ -138,7 +137,7 @@ function Schedule() {
             rooms={visibleRooms}
             bookings={visibleBookings}
             today={today}
-            now={nowTime()}
+            now={now}
             onSelect={openBookingDetails}
           />
         ) : (
@@ -146,7 +145,7 @@ function Schedule() {
             days={period.days}
             bookings={visibleBookings}
             today={today}
-            now={nowTime()}
+            now={now}
             onSelect={openBookingDetails}
           />
         ))}

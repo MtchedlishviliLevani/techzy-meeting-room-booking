@@ -4,24 +4,20 @@ import {
   getDashboardStats,
   getTodayBookings,
   getUpcomingBookings,
-  nowTime,
   resolveBookings,
-  todayISO,
   withAvailability,
   type DashboardData,
 } from "@/components";
 import { useBookingsContext } from "@/context";
 
 export function useDashboard(limit = UPCOMING_PREVIEW_LIMIT): DashboardData {
-  const { bookings, rooms, employees, loading, error } = useBookingsContext();
-
-  const today = todayISO();
-  const now = nowTime();
+  const { bookings, rooms, employees, loading, error, today, now } =
+    useBookingsContext();
 
   return useMemo(() => {
-    const items = resolveBookings(bookings, rooms, employees);
+    const items = resolveBookings(bookings, rooms, employees, today, now);
     const roomsWithAvailability = withAvailability(rooms, bookings, today, now);
-    const upcoming = getUpcomingBookings(items, today, now);
+    const upcoming = getUpcomingBookings(items);
 
     return {
       loading,

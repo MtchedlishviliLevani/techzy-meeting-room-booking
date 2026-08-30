@@ -12,7 +12,6 @@ import {
   resolveBookings,
   sortBookings,
   toBookingFiltersProps,
-  todayISO,
 } from "@/components";
 import { useBookingsContext } from "@/context";
 import { useBookingFilters } from "@/hooks";
@@ -24,6 +23,7 @@ function Bookings() {
     employees,
     loading,
     error,
+    today,
     openCreateBooking,
     openBookingDetails,
     openEditBooking,
@@ -31,8 +31,7 @@ function Bookings() {
   } = useBookingsContext();
   const filters = useBookingFilters();
 
-  const today = todayISO();
-  const bookings = resolveBookings(allBookings, rooms, employees);
+  const bookings = resolveBookings(allBookings, rooms, employees, today);
   const visibleBookings = sortBookings(
     filterBookings(bookings, filters, today),
     today,
