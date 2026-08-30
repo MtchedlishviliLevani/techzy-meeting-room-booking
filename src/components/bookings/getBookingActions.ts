@@ -5,16 +5,14 @@ import type { BookingActions, BookingListItem } from "./type";
 const CANCELLED_HINT = "This booking is already cancelled";
 const COMPLETED_HINT = "Past bookings can no longer be changed";
 
-export const isEditable = (item: BookingListItem) =>
-  item.booking.status === "confirmed";
+export const isEditable = (item: BookingListItem) => item.state === "upcoming";
 
 export function getBookingActions(
   item: BookingListItem,
   { onViewDetails, onEdit, onCancel }: BookingActions,
 ): ActionMenuItem[] {
   const editable = isEditable(item);
-  const hint =
-    item.booking.status === "cancelled" ? CANCELLED_HINT : COMPLETED_HINT;
+  const hint = item.state === "cancelled" ? CANCELLED_HINT : COMPLETED_HINT;
 
   return [
     {
