@@ -15,7 +15,7 @@ function CheckboxGroup<V extends string = string>({
 
       <div className="flex flex-wrap gap-1.5">
         {options.map(({ label: optionLabel, value, icon: Icon }) => (
-          <label key={value}>
+          <label key={value} className="relative">
             <input
               type="checkbox"
               value={value}
