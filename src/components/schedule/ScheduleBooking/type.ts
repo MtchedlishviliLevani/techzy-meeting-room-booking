@@ -8,5 +8,6 @@ export type ScheduleBookingProps = ScheduleSelect & {
   variant?: ScheduleBookingVariant;
   showRoom?: boolean;
   showDate?: boolean;
+  showOrganizer?: boolean;
   className?: string;
 };

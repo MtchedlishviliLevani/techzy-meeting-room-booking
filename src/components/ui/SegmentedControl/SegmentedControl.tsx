@@ -20,7 +20,7 @@ function SegmentedControl<V extends string = string>({
 
       <div className="border-border bg-background flex rounded-lg border p-0.5">
         {options.map((option) => (
-          <label key={option.value} className="min-w-0 flex-1">
+          <label key={option.value} className="relative min-w-0 flex-1">
             <input
               type="radio"
               name={groupName}

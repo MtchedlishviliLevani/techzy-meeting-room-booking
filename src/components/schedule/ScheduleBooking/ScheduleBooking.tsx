@@ -14,6 +14,7 @@ function ScheduleBooking({
   variant = "block",
   showRoom = false,
   showDate = false,
+  showOrganizer = false,
   onSelect,
   className = "",
 }: ScheduleBookingProps) {
@@ -23,12 +24,14 @@ function ScheduleBooking({
 
   const time = formatTimeRange(booking.startTime, booking.endTime);
   const roomName = room?.name ?? "Unknown room";
+  const organizerName = organizer?.name ?? "Unknown organizer";
   const isCancelled = booking.status === "cancelled";
 
   const details = [
     showDate ? formatBookingDate(booking.date) : null,
     time,
     showRoom ? roomName : null,
+    showOrganizer ? organizerName : null,
     statusLabel,
   ]
     .filter(Boolean)
@@ -57,6 +60,7 @@ function ScheduleBooking({
             {showDate && `${formatBookingDate(booking.date)} · `}
             {time}
             {showRoom && ` · ${roomName}`}
+            {showOrganizer && ` · ${organizerName}`}
           </span>
         </span>
 
