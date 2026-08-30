@@ -65,3 +65,8 @@ export async function getBookings(signal?: AbortSignal) {
 
   return fetchSeedBookings(signal);
 }
+
+export async function resetBookings(signal?: AbortSignal) {
+  clearStoredBookings();
+  return fetchSeedBookings(signal);
+}
