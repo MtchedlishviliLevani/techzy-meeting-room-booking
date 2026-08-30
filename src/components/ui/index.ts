@@ -16,6 +16,7 @@ export * from "./ResultCount";
 export * from "./SearchInput";
 export * from "./SegmentedControl";
 export * from "./Select";
+export * from "./StatCard";
 export * from "./TechzyLogo";
 export * from "./TextInput";
 export * from "./Textarea";
