@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import type { BookingFormValues } from "@/components";
+import { isModifiable } from "@/components/bookings/bookingState";
 import { getBookings, saveBookings, type Booking } from "../services";
 
 const createId = () => `booking-${crypto.randomUUID()}`;
@@ -34,24 +35,25 @@ export function useBookings() {
     saveBookings(next);
   }
 
+  function withModifiable(id: string, change: (booking: Booking) => Booking) {
+    const target = bookings.find((booking) => booking.id === id);
+    if (!target || !isModifiable(target)) return;
+
+    commit(
+      bookings.map((booking) => (booking.id === id ? change(booking) : booking)),
+    );
+  }
+
   function createBooking(values: BookingFormValues) {
     commit([...bookings, { id: createId(), status: "confirmed", ...values }]);
   }
 
   function updateBooking(id: string, values: BookingFormValues) {
-    commit(
-      bookings.map((booking) =>
-        booking.id === id ? { ...booking, ...values } : booking,
-      ),
-    );
+    withModifiable(id, (booking) => ({ ...booking, ...values }));
   }
 
   function cancelBooking(id: string) {
-    commit(
-      bookings.map((booking) =>
-        booking.id === id ? { ...booking, status: "cancelled" } : booking,
-      ),
-    );
+    withModifiable(id, (booking) => ({ ...booking, status: "cancelled" }));
   }
 
   return {
