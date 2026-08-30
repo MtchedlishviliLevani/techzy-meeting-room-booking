@@ -1,25 +1,15 @@
 import { ScheduleBooking } from "../ScheduleBooking";
 import {
   formatHour,
+  groupEventsByColumn,
   layoutEvents,
   scheduleBodyHeight,
   scheduleHours,
   timeOffsetPercent,
 } from "../scheduleLayout";
-import type { ScheduleEvent } from "../type";
 import type { ScheduleGridProps } from "./type";
 
 const TIME_COLUMN_WIDTH = "3.75rem";
-
-const groupByColumn = (events: readonly ScheduleEvent[]) => {
-  const byColumn = new Map<string, ScheduleEvent["item"][]>();
-
-  events.forEach(({ columnKey, item }) => {
-    byColumn.set(columnKey, [...(byColumn.get(columnKey) ?? []), item]);
-  });
-
-  return byColumn;
-};
 
 function ScheduleGrid({
   label,
@@ -34,7 +24,7 @@ function ScheduleGrid({
 }: ScheduleGridProps) {
   const hours = scheduleHours(range);
   const bodyHeight = scheduleBodyHeight(range);
-  const byColumn = groupByColumn(events);
+  const byColumn = groupEventsByColumn(events);
   const nowPercent = now ? timeOffsetPercent(range, now.time) : null;
 
   const template = {

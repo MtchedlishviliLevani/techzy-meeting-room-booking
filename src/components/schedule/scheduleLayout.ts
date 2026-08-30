@@ -1,6 +1,10 @@
 import type { CSSProperties } from "react";
 import type { BookingListItem } from "../bookings";
-import type { ScheduleEventLayout, ScheduleHourRange } from "./type";
+import type {
+  ScheduleEvent,
+  ScheduleEventLayout,
+  ScheduleHourRange,
+} from "./type";
 
 export const SCHEDULE_HOUR_HEIGHT = 64;
 
@@ -111,3 +115,15 @@ export const bookedMinutes = (items: readonly BookingListItem[]) =>
   items
     .filter(({ booking }) => booking.status !== "cancelled")
     .reduce((total, item) => total + (endsAt(item) - startsAt(item)), 0);
+
+export function groupEventsByColumn(
+  events: readonly ScheduleEvent[],
+): Map<string, ScheduleEvent["item"][]> {
+  const byColumn = new Map<string, ScheduleEvent["item"][]>();
+
+  events.forEach(({ columnKey, item }) => {
+    byColumn.set(columnKey, [...(byColumn.get(columnKey) ?? []), item]);
+  });
+
+  return byColumn;
+}
