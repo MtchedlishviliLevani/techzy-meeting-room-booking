@@ -12,6 +12,7 @@ function BookingsProvider({ children }: BookingsProviderProps) {
     createBooking,
     updateBooking,
     cancelBooking,
+    resetBookings,
   } = useBookings();
   const { rooms, loading: roomsLoading, error: roomsError } = useRooms();
   const {
@@ -36,6 +37,7 @@ function BookingsProvider({ children }: BookingsProviderProps) {
         loading: bookingsLoading || roomsLoading || employeesLoading,
         error: bookingsError ?? roomsError ?? employeesError,
         openCreateBooking: (roomId) => setDialog({ type: "create", roomId }),
+        openResetDemoData: () => setDialog({ type: "reset" }),
         openBookingDetails: (item) => setDialog({ type: "details", item }),
         openEditBooking: (item) => setDialog({ type: "edit", item }),
         openCancelBooking: (item) => setDialog({ type: "cancel", item }),
@@ -60,6 +62,10 @@ function BookingsProvider({ children }: BookingsProviderProps) {
         }}
         onConfirmCancel={(bookingId) => {
           cancelBooking(bookingId);
+          closeDialog();
+        }}
+        onConfirmReset={() => {
+          resetBookings();
           closeDialog();
         }}
       />

@@ -14,8 +14,29 @@ function BookingDialogs({
   onEdit,
   onSave,
   onConfirmCancel,
+  onConfirmReset,
 }: BookingDialogsProps) {
   if (!dialog) return null;
+
+  if (dialog.type === "reset") {
+    return (
+      <Modal open onClose={onClose} size="sm" title="Reset demo data?">
+        <p className="text-muted text-sm leading-relaxed">
+          Every booking you created, edited or cancelled will be discarded and
+          the original demo bookings restored.
+        </p>
+
+        <div className="border-border mt-5 flex flex-col-reverse gap-2 border-t pt-4 sm:flex-row sm:justify-end">
+          <Button variant="secondary" onClick={onClose}>
+            Keep my changes
+          </Button>
+          <Button variant="danger" onClick={onConfirmReset}>
+            Reset demo data
+          </Button>
+        </div>
+      </Modal>
+    );
+  }
 
   if (dialog.type === "details") {
     const { item } = dialog;
@@ -57,7 +78,7 @@ function BookingDialogs({
           <Button variant="secondary" onClick={onClose}>
             Keep booking
           </Button>
-          <Button onClick={() => onConfirmCancel(booking.id)}>
+          <Button variant="danger" onClick={() => onConfirmCancel(booking.id)}>
             Cancel booking
           </Button>
         </div>
