@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { TechzyLogo } from "../TechzyLogo";
 import { Avatar } from "../Avatar";
 import { isActivePath } from "@/lib";
 import type { ActionItem, NavbarProps } from "./type";
 import { NAV_ITEMS } from "./data";
 
-const ACTIONS: ActionItem[] = [{ label: "Search", icon: Search }];
+const ACTIONS: ActionItem[] = [];
 
 const NAV_LINK_CLASS = {
   active: "bg-header-accent text-header font-medium",
@@ -114,19 +114,21 @@ function Navbar({
             ))}
           </nav>
 
-          <div className="mt-3 flex items-center gap-2 sm:hidden">
-            {actions.map(({ label, icon: Icon, onClick }) => (
-              <button
-                key={label}
-                type="button"
-                aria-label={label}
-                onClick={onClick}
-                className={`inline-flex items-center justify-center rounded-full bg-header-accent/15 p-2 text-header-accent transition-colors duration-200 hover:bg-header-accent/30 hover:text-surface sm:p-2.5`}
-              >
-                <Icon className="size-5" strokeWidth={2} />
-              </button>
-            ))}
-          </div>
+          {actions.length > 0 && (
+            <div className="mt-3 flex items-center gap-2 sm:hidden">
+              {actions.map(({ label, icon: Icon, onClick }) => (
+                <button
+                  key={label}
+                  type="button"
+                  aria-label={label}
+                  onClick={onClick}
+                  className={`inline-flex items-center justify-center rounded-full bg-header-accent/15 p-2 text-header-accent transition-colors duration-200 hover:bg-header-accent/30 hover:text-surface sm:p-2.5`}
+                >
+                  <Icon className="size-5" strokeWidth={2} />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </>
