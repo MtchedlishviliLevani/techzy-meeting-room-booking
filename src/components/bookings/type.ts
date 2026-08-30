@@ -4,9 +4,11 @@ import type {
   BookingStatusFilter,
 } from "./BookingFilters/data";
 
+export type BookingState = "upcoming" | "completed" | "cancelled";
+
 export type BookingListItem = {
-  
   booking: Booking;
+  state: BookingState;
   room?: Room;
   organizer?: Employee;
   attendees: Employee[];
@@ -53,9 +55,7 @@ export type BookingFormErrors = Partial<Record<keyof BookingFormValues, string>>
 export type ValidateBookingOptions = {
   rooms: readonly Room[];
   bookings: readonly Booking[];
-  
   bookingId?: string;
-  
   allowPastStart?: boolean;
   today?: string;
   now?: string;

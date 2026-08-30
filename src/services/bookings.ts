@@ -15,13 +15,21 @@ function toCurrentDates(bookings: readonly Booking[]): Booking[] {
   }));
 }
 
+function normalizeStored(bookings: readonly Booking[]): Booking[] {
+  return bookings.map((booking) =>
+    booking.status === "confirmed" || booking.status === "cancelled"
+      ? booking
+      : { ...booking, status: "confirmed" },
+  );
+}
+
 function readStoredBookings(): Booking[] | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
 
     const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as Booking[]) : null;
+    return Array.isArray(parsed) ? normalizeStored(parsed as Booking[]) : null;
   } catch {
     return null;
   }
