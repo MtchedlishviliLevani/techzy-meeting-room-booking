@@ -64,6 +64,7 @@ export type ValidateBookingOptions = {
 
 export type BookingDialog =
   | { type: "create"; roomId?: string }
+  | { type: "reset" }
   | { type: "details"; item: BookingListItem }
   | { type: "edit"; item: BookingListItem }
   | { type: "cancel"; item: BookingListItem };

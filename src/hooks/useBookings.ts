@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import type { BookingFormValues } from "@/components";
 import { isModifiable } from "@/components/bookings/bookingState";
-import { getBookings, saveBookings, type Booking } from "../services";
+import {
+  getBookings,
+  resetBookings as resetToSeedBookings,
+  saveBookings,
+  type Booking,
+} from "../services";
 
 const createId = () => `booking-${crypto.randomUUID()}`;
 
@@ -56,6 +61,23 @@ export function useBookings() {
     withModifiable(id, (booking) => ({ ...booking, status: "cancelled" }));
   }
 
+  function resetBookings() {
+    setLoading(true);
+
+    resetToSeedBookings()
+      .then((data) => {
+        setBookings(data);
+        setError(null);
+        setLoading(false);
+      })
+      .catch((err: unknown) => {
+        setError(
+          err instanceof Error ? err : new Error("Failed to reset bookings"),
+        );
+        setLoading(false);
+      });
+  }
+
   return {
     bookings,
     loading,
@@ -63,5 +85,6 @@ export function useBookings() {
     createBooking,
     updateBooking,
     cancelBooking,
+    resetBookings,
   };
 }

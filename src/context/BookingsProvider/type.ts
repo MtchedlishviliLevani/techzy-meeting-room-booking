@@ -12,6 +12,7 @@ export type BookingsContextValue = {
   today: string;
   now: string;
   openCreateBooking: (roomId?: string) => void;
+  openResetDemoData: () => void;
   openBookingDetails: (item: BookingListItem) => void;
   openEditBooking: (item: BookingListItem) => void;
   openCancelBooking: (item: BookingListItem) => void;

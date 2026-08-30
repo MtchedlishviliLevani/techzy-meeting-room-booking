@@ -14,7 +14,7 @@ export type RoomListItem = Room & {
 
 export type RoomActions = {
   onBook?: (room: Room) => void;
-  onViewDetails?: (room: Room) => void;
+  onViewDetails?: (room: RoomListItem) => void;
 };
 
 export type RoomFilterValues = {
