@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { BookingDialogs, type BookingDialog } from "@/components";
+import {
+  BookingDialogs,
+  type BookingDialog,
+  type BookingFormValues,
+} from "@/components";
 import { useBookings, useEmployees, useNow, useRooms } from "@/hooks";
 import { BookingsContext } from "./context";
 import type { BookingsProviderProps } from "./type";
@@ -25,6 +29,25 @@ function BookingsProvider({ children }: BookingsProviderProps) {
 
   const [dialog, setDialog] = useState<BookingDialog | null>(null);
   const closeDialog = () => setDialog(null);
+
+  const handleSave = (values: BookingFormValues, bookingId?: string) => {
+    if (bookingId) {
+      updateBooking(bookingId, values);
+    } else {
+      createBooking(values);
+    }
+    closeDialog();
+  };
+
+  const handleConfirmCancel = (bookingId: string) => {
+    cancelBooking(bookingId);
+    closeDialog();
+  };
+
+  const handleConfirmReset = () => {
+    resetBookings();
+    closeDialog();
+  };
 
   return (
     <BookingsContext.Provider
@@ -52,22 +75,9 @@ function BookingsProvider({ children }: BookingsProviderProps) {
         bookings={bookings}
         onClose={closeDialog}
         onEdit={(item) => setDialog({ type: "edit", item })}
-        onSave={(values, bookingId) => {
-          if (bookingId) {
-            updateBooking(bookingId, values);
-          } else {
-            createBooking(values);
-          }
-          closeDialog();
-        }}
-        onConfirmCancel={(bookingId) => {
-          cancelBooking(bookingId);
-          closeDialog();
-        }}
-        onConfirmReset={() => {
-          resetBookings();
-          closeDialog();
-        }}
+        onSave={handleSave}
+        onConfirmCancel={handleConfirmCancel}
+        onConfirmReset={handleConfirmReset}
       />
     </BookingsContext.Provider>
   );
