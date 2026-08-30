@@ -12,8 +12,8 @@ function BookingCard({
   className = "",
   ...actions
 }: BookingCardProps) {
-  const { booking, room, organizer, attendees } = item;
-  const isCancelled = booking.status === "cancelled";
+  const { booking, state, room, organizer, attendees } = item;
+  const isCancelled = state === "cancelled";
 
   return (
     <article
@@ -72,7 +72,7 @@ function BookingCard({
       </dl>
 
       <div className="mt-4">
-        <BookingStatus status={booking.status} />
+        <BookingStatus status={state} />
       </div>
     </article>
   );

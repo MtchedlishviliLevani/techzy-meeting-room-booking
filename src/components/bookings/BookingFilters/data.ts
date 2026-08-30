@@ -5,7 +5,7 @@ import type { BookingFiltersProps } from "./type";
 
 export const BOOKING_STATUS_OPTIONS = [
   { label: "All", value: "all" },
-  { label: "Confirmed", value: "confirmed" },
+  { label: "Upcoming", value: "upcoming" },
   { label: "Completed", value: "completed" },
   { label: "Cancelled", value: "cancelled" },
 ] as const;
