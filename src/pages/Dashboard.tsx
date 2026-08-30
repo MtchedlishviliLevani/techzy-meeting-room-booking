@@ -1,4 +1,11 @@
-import { CalendarCheck, CalendarOff, DoorClosed, Plus, TriangleAlert } from "lucide-react";
+import {
+  CalendarCheck,
+  CalendarOff,
+  DoorClosed,
+  Plus,
+  RotateCcw,
+  TriangleAlert,
+} from "lucide-react";
 import {
   Button,
   DashboardBookingList,
@@ -14,7 +21,8 @@ import { useDashboard } from "@/hooks";
 import { countLabel } from "@/lib";
 
 function Dashboard() {
-  const { openCreateBooking, openBookingDetails } = useBookingsContext();
+  const { openCreateBooking, openBookingDetails, openResetDemoData } =
+    useBookingsContext();
   const {
     loading,
     error,
@@ -34,13 +42,23 @@ function Dashboard() {
         title="Dashboard"
         description={`${formatFullDate(today)} — here's what's happening across your meeting rooms today.`}
         action={
-          <Button
-            icon={Plus}
-            onClick={() => openCreateBooking()}
-            className="shrink-0 max-sm:w-full"
-          >
-            New Booking
-          </Button>
+          <div className="flex shrink-0 gap-2 max-sm:w-full">
+            <Button
+              variant="secondary"
+              icon={RotateCcw}
+              onClick={openResetDemoData}
+              className="max-sm:flex-1"
+            >
+              Reset demo data
+            </Button>
+            <Button
+              icon={Plus}
+              onClick={() => openCreateBooking()}
+              className="max-sm:flex-1"
+            >
+              New Booking
+            </Button>
+          </div>
         }
       />
 
