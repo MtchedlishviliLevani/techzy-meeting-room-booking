@@ -1,5 +1,5 @@
-import { useEffect, useId, useRef } from "react";
 import { X } from "lucide-react";
+import { useModalDialog } from "@/hooks/useModalDialog";
 import type { ModalProps } from "./type";
 
 const SIZE = {
@@ -18,14 +18,10 @@ function Modal({
   children,
   className = "",
 }: ModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const titleId = useId();
-  const descriptionId = useId();
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (open && dialog && !dialog.open) dialog.showModal();
-  }, [open]);
+  const { dialogRef, titleId, descriptionId, dialogHandlers } = useModalDialog(
+    open,
+    onClose,
+  );
 
   if (!open) return null;
 
@@ -34,14 +30,8 @@ function Modal({
       ref={dialogRef}
       aria-labelledby={titleId}
       aria-describedby={description ? descriptionId : undefined}
-      onCancel={(event) => {
-        event.preventDefault();
-        onClose();
-      }}
-      onClick={(event) => {
-        if (event.target === dialogRef.current) onClose();
-      }}
-      className={`bg-raised border-border text-ink open:flex m-auto max-h-[85vh] w-[calc(100%-1.5rem)] flex-col overflow-hidden rounded-2xl border p-0 shadow-lg backdrop:bg-header/50 ${SIZE[size]} ${className}`}
+      {...dialogHandlers}
+      className={`bg-raised border-border text-ink open:flex m-auto max-h-[85dvh] w-[calc(100%-1.5rem)] flex-col overflow-hidden rounded-2xl border p-0 shadow-lg backdrop:bg-header/50 ${SIZE[size]} ${className}`}
     >
       <header className="border-border flex items-start justify-between gap-3 border-b px-4 py-3.5 sm:px-5">
         <div className="min-w-0">
@@ -68,7 +58,7 @@ function Modal({
         </button>
       </header>
 
-      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-5">
+      <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-5">
         {children}
       </div>
 

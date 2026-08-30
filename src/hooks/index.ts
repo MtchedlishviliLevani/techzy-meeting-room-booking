@@ -2,6 +2,7 @@ export * from "./useBookingFilters";
 export * from "./useBookings";
 export * from "./useDashboard";
 export * from "./useEmployees";
+export * from "./useModalDialog";
 export * from "./useRoomFilters";
 export * from "./useRooms";
 export * from "./useSchedule";
