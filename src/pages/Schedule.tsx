@@ -11,10 +11,12 @@ import {
   ScheduleLegend,
   WeekSchedule,
   filterScheduleBookings,
+  getScheduleVisibility,
   isCurrentPeriod,
   resolveBookings,
   schedulePeriod,
   toRoomOptions,
+  visibleScheduleRooms,
 } from "@/components";
 import { useBookingsContext } from "@/context";
 import { useSchedule } from "@/hooks";
@@ -42,16 +44,10 @@ function Schedule() {
     schedule.roomId,
   );
 
-  const visibleRooms =
-    schedule.roomId === ALL_ROOMS
-      ? rooms
-      : rooms.filter((room) => room.id === schedule.roomId);
+  const visibleRooms = visibleScheduleRooms(rooms, schedule.roomId);
 
-  const showRoomEmptyState = !loading && !error && visibleRooms.length === 0;
-  const showBookingsEmptyState =
-    !loading && !error && visibleRooms.length > 0 && visibleBookings.length === 0;
-  const showSchedule =
-    !loading && !error && visibleRooms.length > 0 && visibleBookings.length > 0;
+  const { showRoomEmptyState, showBookingsEmptyState, showSchedule } =
+    getScheduleVisibility(visibleRooms, visibleBookings, !loading && !error);
 
   return (
     <div className="flex flex-col gap-4 sm:gap-5">

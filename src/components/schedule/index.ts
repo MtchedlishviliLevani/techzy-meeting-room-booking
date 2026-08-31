@@ -8,5 +8,6 @@ export * from "./ScheduleEmptyState";
 export * from "./ScheduleGrid";
 export * from "./scheduleLayout";
 export * from "./ScheduleLegend";
+export * from "./scheduleView";
 export * from "./type";
 export * from "./WeekSchedule";

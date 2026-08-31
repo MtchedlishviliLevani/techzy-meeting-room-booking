@@ -63,3 +63,9 @@ export type ScheduleGroup = {
 export type ScheduleSelect = {
   onSelect?: (item: BookingListItem) => void;
 };
+
+export type ScheduleVisibility = {
+  showRoomEmptyState: boolean;
+  showBookingsEmptyState: boolean;
+  showSchedule: boolean;
+};
